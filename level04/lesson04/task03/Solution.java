@@ -10,16 +10,15 @@ package com.javarush.test.level04.lesson04.task03;
 Число 60 содержится в интервале.
 */
 
-public class Solution
-{
+public class Solution {
     public static void main(String[] args) {
         checkInterval(60);
         checkInterval(112);
     }
 
-    public static void checkInterval(int a){
+    public static void checkInterval(int a) {
         //::CODE:
-        if (a >= 50 && a <=100) {
+        if (a >= 50 && a <= 100) {
             System.out.println("Число " + a + " содержится в интервале.");
         } else {
             System.out.println("Число " + a + " не содержится в интервале.");

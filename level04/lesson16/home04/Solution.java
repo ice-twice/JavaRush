@@ -1,6 +1,7 @@
 package com.javarush.test.level04.lesson16.home04;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 /* Меня зовут 'Вася'...
 Ввести с клавиатуры строку name.

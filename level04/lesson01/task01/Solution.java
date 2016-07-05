@@ -5,8 +5,7 @@ package com.javarush.test.level04.lesson01.task01;
 Исправьте ошибку в программе чтобы переменная age объекта person изменила свое значение.
 Подсказка: тщательно просмотрите метод adjustAge
 */
-public class Solution
-{
+public class Solution {
     public static void main(String[] args) {
 
         Person person = new Person();
@@ -15,12 +14,10 @@ public class Solution
         System.out.println("Adjusted Age is: " + person.age);
     }
 
-    public static class Person
-    {
+    public static class Person {
         public int age = 20;
 
-        public void adjustAge(int age)
-        {
+        public void adjustAge(int age) {
             this.age = age + 20;
             System.out.println("The Age in adjustAge() is " + age);
         }

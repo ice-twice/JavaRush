@@ -1,6 +1,7 @@
 package com.javarush.test.level04.lesson13.task02;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 /* Рисуем прямоугольник
 Ввести с клавиатуры два числа m и n.
@@ -10,10 +11,8 @@ import java.io.*;
 8888
 */
 
-public class Solution
-{
-    public static void main(String[] args) throws Exception
-    {
+public class Solution {
+    public static void main(String[] args) throws Exception {
         //напишите тут ваш код
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         int m = Integer.parseInt(reader.readLine());

@@ -1,7 +1,5 @@
 package com.javarush.test.level04.lesson10.task05;
 
-import java.io.*;
-
 /* Таблица умножения
 Вывести на экран таблицу умножения 10х10 используя цикл while.
 Числа разделить пробелом.

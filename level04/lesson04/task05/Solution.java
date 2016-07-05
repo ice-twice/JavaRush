@@ -5,7 +5,8 @@ package com.javarush.test.level04.lesson04.task05;
 Вывести результат на экран.
 */
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class Solution {
     public static void main(String[] args) throws Exception {

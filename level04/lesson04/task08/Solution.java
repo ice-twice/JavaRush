@@ -10,7 +10,8 @@ package com.javarush.test.level04.lesson04.task08;
 Если хотя бы в одном случае сторона окажется больше суммы двух других, то треугольника с такими сторонами не существует.
 */
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class Solution {
     public static void main(String[] args) throws Exception {

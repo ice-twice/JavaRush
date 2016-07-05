@@ -9,12 +9,12 @@ import java.util.ArrayList;
 */
 
 public class Cat {
+    //напишите тут ваш код
+    public static ArrayList<Cat> cats = new ArrayList<>();
+
     public Cat() {
         cats.add(this);
     }
-
-    //напишите тут ваш код
-    public static ArrayList<Cat> cats = new ArrayList<>();
 
     public static void main(String[] args) {
         //Создай тут 10 котов

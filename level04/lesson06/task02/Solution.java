@@ -4,7 +4,8 @@ package com.javarush.test.level04.lesson06.task02;
 Ввести с клавиатуры четыре числа, и вывести максимальное из них.
 */
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class Solution {
     public static void main(String[] args) throws Exception {

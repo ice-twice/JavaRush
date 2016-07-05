@@ -7,11 +7,11 @@ package com.javarush.test.level03.lesson12.home03;
 Я буду зарабатывать $50 в час
 */
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class Solution {
-    public static void main(String[] args)   throws Exception
-    {
+    public static void main(String[] args) throws Exception {
         //напишите тут ваш код
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(reader.readLine());

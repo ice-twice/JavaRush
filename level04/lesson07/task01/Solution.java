@@ -13,7 +13,8 @@ package com.javarush.test.level04.lesson07.task01;
 отрицательное нечетное число
 */
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class Solution {
     public static void main(String[] args) throws Exception {

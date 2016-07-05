@@ -19,16 +19,16 @@ public class Solution {
     public static Map<String, String> createPeopleList() {
         //напишите тут ваш код
         Map<String, String> map = new HashMap<>();
-        map.put("lastName","firstName1");
-        map.put("lastName","firstName2");
-        map.put("lastName","firstName3");
-        map.put("lastName1","firstName4");
-        map.put("lastName2","firstName5");
-        map.put("lastName3","firstName6");
-        map.put("lastName4","firstName7");
-        map.put("lastName5","firstName");
-        map.put("lastName6","firstName");
-        map.put("lastName7","firstName");
+        map.put("lastName", "firstName1");
+        map.put("lastName", "firstName2");
+        map.put("lastName", "firstName3");
+        map.put("lastName1", "firstName4");
+        map.put("lastName2", "firstName5");
+        map.put("lastName3", "firstName6");
+        map.put("lastName4", "firstName7");
+        map.put("lastName5", "firstName");
+        map.put("lastName6", "firstName");
+        map.put("lastName7", "firstName");
 
         return map;
     }

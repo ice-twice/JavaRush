@@ -1,6 +1,7 @@
 package com.javarush.test.level04.lesson10.task03;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 /* Хорошего не бывает много
 Ввести с клавиатуры строку и число N.

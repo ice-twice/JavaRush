@@ -8,9 +8,9 @@ package com.javarush.test.level05.lesson05.task04;
 public class Solution {
     public static void main(String[] args) {
         //напишите тут ваш код
-        new Cat("q",1,1,1);
-        new Cat("w",1,1,1);
-        new Cat("e",1,1,1);
+        new Cat("q", 1, 1, 1);
+        new Cat("w", 1, 1, 1);
+        new Cat("e", 1, 1, 1);
     }
 
     public static class Cat {

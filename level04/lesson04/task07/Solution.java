@@ -10,7 +10,8 @@ package com.javarush.test.level04.lesson04.task07;
 Годы 2100, 2200 и 2300 — невисокосные.
 */
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class Solution {
     public static void main(String[] args) throws Exception {

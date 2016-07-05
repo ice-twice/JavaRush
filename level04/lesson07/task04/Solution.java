@@ -12,7 +12,8 @@ package com.javarush.test.level04.lesson07.task04;
 количество положительных чисел: 1
 */
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class Solution {
     public static void main(String[] args) throws Exception {

@@ -1,6 +1,7 @@
 package com.javarush.test.level05.lesson12.bonus03;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 /* Задача по алгоритмам
 Написать программу, которая:

@@ -1,8 +1,6 @@
 package com.javarush.test.level08.lesson11.home02;
 
-import java.util.Collections;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 /* Множество всех животных

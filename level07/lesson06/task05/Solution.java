@@ -3,7 +3,6 @@ package com.javarush.test.level07.lesson06.task05;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Collections;
 
 /* Удали последнюю строку и вставь её в начало
 1. Создай список строк.

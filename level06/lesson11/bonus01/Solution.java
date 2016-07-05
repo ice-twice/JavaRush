@@ -8,12 +8,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Solution
-{
+public class Solution {
     public static int max = 0;
-    public static void main(String[] args) throws IOException
-    {
-        BufferedReader reader  = new BufferedReader(new InputStreamReader(System.in));
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
         String sMax = "Max is ";
         int a = Integer.parseInt(reader.readLine());
