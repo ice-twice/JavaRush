@@ -25,14 +25,13 @@ public class Solution {
         System.out.println("Static block");
     }
 
+    public int i = 6;
+    public String name = "First name";
+
     {
         System.out.println("non-static block");
         printAllFields(this);
     }
-
-    public int i = 6;
-
-    public String name = "First name";
 
 
     public Solution() {
