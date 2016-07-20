@@ -52,9 +52,9 @@ public class Solution {
     }
 
     public static class Runner {
+        Stopwatch stopwatch;
         private String name;
         private double speed;
-        Stopwatch stopwatch;
 
         public Runner(String name, double speed) {
             this.name = name;

@@ -25,8 +25,8 @@ public class Solution {
     }
 
     public static class SleepingThread extends Thread {
-        private volatile int countDownIndex = COUNT;
         private static volatile int threadCount = 0;
+        private volatile int countDownIndex = COUNT;
 
         public SleepingThread() {
             super(String.valueOf(++threadCount));

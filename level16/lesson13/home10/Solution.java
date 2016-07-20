@@ -59,9 +59,8 @@ public class Solution {
     }
 
     public static class ReadFileThread extends Thread implements ReadFileInterface {
-        private String fileName;
         StringBuilder stringBuilder;
-
+        private String fileName;
 
         @Override
         public void setFileName(String fullFileName) {

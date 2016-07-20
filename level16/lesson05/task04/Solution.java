@@ -14,6 +14,13 @@ public class Solution {
         Mouse mouse2 = new Mouse("#3");
     }
 
+    private static void eating() {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+        }
+    }
+
     public static class Mouse extends Thread {
         public Mouse(String name) {
             super(name);
@@ -24,13 +31,6 @@ public class Solution {
             System.out.println(getName() + " starts eating");
             eating();
             System.out.println(getName() + " finished");
-        }
-    }
-
-    private static void eating() {
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
         }
     }
 }

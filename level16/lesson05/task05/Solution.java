@@ -16,6 +16,15 @@ public class Solution {
         Cat cat2 = new Cat("Пушинка");
     }
 
+    private static void investigateWorld() {
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public static class Cat extends Thread {
         protected Kitten kitten1;
         protected Kitten kitten2;
@@ -54,14 +63,5 @@ public class Solution {
             System.out.println(getName() + ", вылез из корзинки");
             investigateWorld();
         }
-    }
-
-    private static void investigateWorld() {
-        try {
-            Thread.sleep(200);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
     }
 }

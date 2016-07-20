@@ -35,13 +35,27 @@ public class Solution {
         return countFinished;
     }
 
+    public static List<Horse> prepareHorsesAndStart() {
+        List<Horse> horses = new ArrayList<Horse>(countHorses);
+        String number;
+        for (int i = 1; i < countHorses + 1; i++) {
+            number = i < 10 ? ("0" + i) : "" + i;
+            horses.add(new Horse("Horse_" + number));
+        }
+
+        for (int i = 0; i < countHorses; i++) {
+            horses.get(i).start();
+        }
+        return horses;
+    }
+
     public static class Horse extends Thread {
+
+        private boolean isFinished;
 
         public Horse(String name) {
             super(name);
         }
-
-        private boolean isFinished;
 
         public boolean isFinished() {
             return isFinished;
@@ -58,19 +72,5 @@ public class Solution {
                 }
             }
         }
-    }
-
-    public static List<Horse> prepareHorsesAndStart() {
-        List<Horse> horses = new ArrayList<Horse>(countHorses);
-        String number;
-        for (int i = 1; i < countHorses + 1; i++) {
-            number = i < 10 ? ("0" + i) : "" + i;
-            horses.add(new Horse("Horse_" + number));
-        }
-
-        for (int i = 0; i < countHorses; i++) {
-            horses.get(i).start();
-        }
-        return horses;
     }
 }

@@ -27,6 +27,13 @@ public class Solution {
         }
     }
 
+    public static void sleep() {
+        try {
+            Thread.sleep(10);
+        } catch (InterruptedException e) {
+        }
+    }
+
     static class MyThread extends Thread {
         String message = "inside MyThread ";
 
@@ -35,13 +42,6 @@ public class Solution {
                 System.out.println(message + i);
                 Solution.sleep();
             }
-        }
-    }
-
-    public static void sleep() {
-        try {
-            Thread.sleep(10);
-        } catch (InterruptedException e) {
         }
     }
 }
