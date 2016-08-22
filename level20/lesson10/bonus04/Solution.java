@@ -52,13 +52,13 @@ import java.util.*;
 Метод main в тестировании не участвует
 */
 public class Solution extends AbstractList<String> implements List<String>, Cloneable, Serializable {
-    public static void main(String[] args) throws IOException, ClassNotFoundException, CloneNotSupportedException {
-    }
-
     private int size = 0;
     private Node last;
     private Node first;
     private ArrayList<String> parentList = new ArrayList<>();
+
+    public static void main(String[] args) throws IOException, ClassNotFoundException, CloneNotSupportedException {
+    }
 
     private String getParent(String value) {
         if (first != null) {
@@ -106,23 +106,6 @@ public class Solution extends AbstractList<String> implements List<String>, Clon
         else
             l.next = newNode;
         size++;
-    }
-
-    private static class Node implements Serializable {
-        String s;
-        Node next;
-        Node prev;
-        Node parent;
-        Node child1;
-        Node child2;
-        int countChild;
-
-        Node(Node prev, Node next, String s, Node parent) {
-            this.prev = prev;
-            this.next = next;
-            this.s = s;
-            this.parent = parent;
-        }
     }
 
     public boolean remove(Object o) {
@@ -338,6 +321,52 @@ public class Solution extends AbstractList<String> implements List<String>, Clon
         return new ListItr();
     }
 
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return size() == 0;
+    }
+
+    @Override
+    public boolean contains(Object o) {
+        for (Node node = first; node != null; node = node.next)
+            if (node.s.equals(o)) {
+                return true;
+            }
+        return false;
+    }
+
+    @Override
+    public boolean retainAll(Collection<?> c) {
+        return super.retainAll(c);
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
+
+    private static class Node implements Serializable {
+        String s;
+        Node next;
+        Node prev;
+        Node parent;
+        Node child1;
+        Node child2;
+        int countChild;
+
+        Node(Node prev, Node next, String s, Node parent) {
+            this.prev = prev;
+            this.next = next;
+            this.s = s;
+            this.parent = parent;
+        }
+    }
+
     private class ListItr implements Iterator {
         private Node lastReturned;
         private Node next;
@@ -376,34 +405,5 @@ public class Solution extends AbstractList<String> implements List<String>, Clon
                 nextIndex--;
             lastReturned = null;
         }
-    }
-
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return size() == 0;
-    }
-
-    @Override
-    public boolean contains(Object o) {
-        for (Node node = first; node != null; node = node.next)
-            if (node.s.equals(o)) {
-                return true;
-            }
-        return false;
-    }
-
-    @Override
-    public boolean retainAll(Collection<?> c) {
-        return super.retainAll(c);
-    }
-
-    @Override
-    public String toString() {
-        return super.toString();
     }
 }
