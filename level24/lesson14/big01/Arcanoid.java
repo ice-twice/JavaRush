@@ -201,7 +201,7 @@ public class Arcanoid {
     public void checkEndGame() {
         //Если шарик улетел за нижнюю границы - игра окончена.
         if (ball.getY() >= height) {
-           isGameOver = true;
+            isGameOver = true;
         }
 
     }
