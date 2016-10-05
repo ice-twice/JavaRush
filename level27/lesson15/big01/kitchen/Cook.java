@@ -7,59 +7,42 @@ import com.javarush.test.level27.lesson15.big01.statistic.event.CookedOrderEvent
 import java.util.Observable;
 import java.util.concurrent.LinkedBlockingQueue;
 
-/**
- * Created by
- * Polurival on 04.03.2016.
- */
-public class Cook extends Observable implements Runnable
-{
+public class Cook extends Observable implements Runnable {
     private final String name;
 
     private boolean busy;
+    private LinkedBlockingQueue<Order> queue;
 
-    public boolean isBusy()
-    {
-        return busy;
-    }
-
-    public Cook(String name)
-    {
+    public Cook(String name) {
         this.name = name;
     }
 
-    private LinkedBlockingQueue<Order> queue;
+    public boolean isBusy() {
+        return busy;
+    }
 
-    public void setQueue(LinkedBlockingQueue<Order> queue)
-    {
+    public void setQueue(LinkedBlockingQueue<Order> queue) {
         this.queue = queue;
     }
 
     @Override
-    public void run()
-    {
-        while (!Thread.currentThread().isInterrupted())
-        {
-            if (!queue.isEmpty())
-            {
+    public void run() {
+        while (!Thread.currentThread().isInterrupted()) {
+            if (!queue.isEmpty()) {
                 Order order = queue.poll();
-                if (order != null)
-                {
+                if (order != null) {
                     this.startCookingOrder(order);
                 }
-                try
-                {
+                try {
                     Thread.sleep(10);
-                }
-                catch (InterruptedException e)
-                {
+                } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
                 }
             }
         }
     }
 
-    public void startCookingOrder(Order order)
-    {
+    public void startCookingOrder(Order order) {
         busy = true;
 
         ConsoleHelper.writeMessage("Start cooking - " + order +
@@ -72,12 +55,9 @@ public class Cook extends Observable implements Runnable
                 order.getDishes());
         StatisticEventManager.getInstance().register(eventDataRow);
 
-        try
-        {
+        try {
             Thread.sleep(10 * order.getTotalCookingTime());
-        }
-        catch (InterruptedException e)
-        {
+        } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
 
@@ -88,8 +68,7 @@ public class Cook extends Observable implements Runnable
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return name;
     }
 }

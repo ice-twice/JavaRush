@@ -6,20 +6,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
-/**
- * Created by
- * Polurival on 12.03.2016.
- */
-public class TestOrder extends Order
-{
-    public TestOrder(Tablet tablet) throws IOException
-    {
+public class TestOrder extends Order {
+    public TestOrder(Tablet tablet) throws IOException {
         super(tablet);
     }
 
     @Override
-    protected void initDishes()
-    {
+    protected void initDishes() {
         dishes = new ArrayList<>();
         ThreadLocalRandom random = ThreadLocalRandom.current();
         int i = random.nextInt(Dish.values().length);

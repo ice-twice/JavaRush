@@ -1,11 +1,6 @@
 package com.javarush.test.level27.lesson15.big01.ad;
 
-/**
- * Created by
- * Polurival on 05.03.2016.
- */
-public class Advertisement
-{
+public class Advertisement {
     private Object content;
     private String name;
     private long initialAmount;
@@ -13,8 +8,7 @@ public class Advertisement
     private int duration;
     private long amountPerOneDisplaying;
 
-    public Advertisement(Object content, String name, long initialAmount, int hits, int duration)
-    {
+    public Advertisement(Object content, String name, long initialAmount, int hits, int duration) {
         this.content = content;
         this.name = name;
         this.initialAmount = initialAmount;
@@ -23,35 +17,28 @@ public class Advertisement
         this.amountPerOneDisplaying = initialAmount / hits;
     }
 
-    public String getName()
-    {
+    public String getName() {
         return name;
     }
 
-    public int getHits()
-    {
+    public int getHits() {
         return hits;
     }
 
-    public int getDuration()
-    {
+    public int getDuration() {
         return duration;
     }
 
-    public long getAmountPerOneDisplaying()
-    {
+    public long getAmountPerOneDisplaying() {
         return amountPerOneDisplaying;
     }
 
-    public void revalidate()
-    {
-        if (hits <= 0)
-        {
+    public void revalidate() {
+        if (hits <= 0) {
             throw new UnsupportedOperationException();
         }
         hits--;
-        if (hits == 1)
-        {
+        if (hits == 1) {
             amountPerOneDisplaying += initialAmount % amountPerOneDisplaying;
         }
     }

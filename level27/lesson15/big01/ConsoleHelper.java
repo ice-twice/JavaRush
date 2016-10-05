@@ -8,42 +8,29 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by
- * Polurival on 03.03.2016.
- */
-public class ConsoleHelper
-{
+public class ConsoleHelper {
     private static final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-    public static void writeMessage(String message)
-    {
+    public static void writeMessage(String message) {
         System.out.println(message);
     }
 
-    public static String readString() throws IOException
-    {
+    public static String readString() throws IOException {
         return reader.readLine();
     }
 
-    public static List<Dish> getAllDishesForOrder() throws IOException
-    {
+    public static List<Dish> getAllDishesForOrder() throws IOException {
         List<Dish> dishes = new ArrayList<>();
-        while (true)
-        {
+        while (true) {
             String input = readString();
-            if ("exit".equals(input))
-            {
+            if ("exit".equals(input)) {
                 break;
             }
 
-            try
-            {
+            try {
                 Dish dish = Dish.valueOf(input);
                 dishes.add(dish);
-            }
-            catch (IllegalArgumentException e)
-            {
+            } catch (IllegalArgumentException e) {
                 writeMessage(input + " is not detected");
             }
         }
