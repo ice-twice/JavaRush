@@ -13,8 +13,10 @@ public class HHStrategy implements Strategy {
     @Override
     public List<Vacancy> getVacancies(String searchString) {
         String url = String.format(URL_FORMAT, searchString, 0);
+        String userAgent = "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36";
+        String referrer = "https://www.google.com.ua/";
         try {
-            Document document = Jsoup.connect(url).userAgent("Mozilla").get();
+            Document document = Jsoup.connect(url).userAgent(userAgent).referrer(referrer).get();
             document.html();
         } catch (IOException e) {
         }
