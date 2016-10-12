@@ -28,7 +28,7 @@ public class Controller {
 
     public void scan() {
         for (Provider provider : providers) {
-            List<Vacancy> vacs = provider.getJavaVacancies("java Киев");
+            List<Vacancy> vacs = provider.getJavaVacancies("Киев");
             if (vacs != null) {
                 vacancies.addAll(vacs);
             }
