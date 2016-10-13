@@ -6,6 +6,7 @@ import com.javarush.test.level28.lesson15.big01.vo.Vacancy;
 import java.util.List;
 
 public class HtmlView implements View {
+    private final String filePath = "./src/" + this.getClass().getPackage().getName().replace(".", "/") + "/vacancies.html";
     private Controller controller;
 
     @Override
@@ -21,5 +22,13 @@ public class HtmlView implements View {
 
     public void userCitySelectEmulationMethod() {
         controller.onCitySelect("Odessa");
+    }
+
+    private String getUpdatedFileContent(List<Vacancy> vacancies) {
+        return null;
+    }
+
+    private void updateFile(String s) {
+
     }
 }
