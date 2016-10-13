@@ -3,6 +3,8 @@ package com.javarush.test.level28.lesson15.big01.view;
 import com.javarush.test.level28.lesson15.big01.Controller;
 import com.javarush.test.level28.lesson15.big01.vo.Vacancy;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.List;
 
 public class HtmlView implements View {
@@ -29,6 +31,10 @@ public class HtmlView implements View {
     }
 
     private void updateFile(String s) {
+        try (PrintWriter printWriter = new PrintWriter(filePath)) {
+            printWriter.print(s);
+        } catch (FileNotFoundException e) {
 
+        }
     }
 }
