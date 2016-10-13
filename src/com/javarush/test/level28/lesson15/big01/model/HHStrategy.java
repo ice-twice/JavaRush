@@ -3,8 +3,11 @@ package com.javarush.test.level28.lesson15.big01.model;
 import com.javarush.test.level28.lesson15.big01.vo.Vacancy;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class HHStrategy implements Strategy {
@@ -12,16 +15,52 @@ public class HHStrategy implements Strategy {
 
     @Override
     public List<Vacancy> getVacancies(String searchString) {
-        String url = String.format(URL_FORMAT, searchString, 0);
-        String userAgent = "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.143 Safari/537.36";
-        String referrer = "https://www.google.com.ua/";
+        List<Vacancy> vacancies = new ArrayList<>();
         try {
-            Document document = Jsoup.connect(url).userAgent(userAgent).referrer(referrer).get();
-            document.html();
+            int pageNumber = 0;
+            while (true) {
+                Document doc = getDocument(searchString, pageNumber);
+                Elements vacancysElements = doc.select("[data-qa=vacancy-serp__vacancy]");
+                if (vacancysElements.isEmpty()) {
+                    break;
+                }
+                for (Element element : vacancysElements) {
+                    Element titleElement = element.select("[data-qa=vacancy-serp__vacancy-title]").first();
+                    String title = titleElement.text();
+                    String url = titleElement.attr("href");
+
+                    Element addressElement = element.select("[data-qa=vacancy-serp__vacancy-address]").first();
+                    String city = addressElement.text();
+
+                    Element companyElement = element.select("[data-qa=vacancy-serp__vacancy-employer]").first();
+                    String companyName = companyElement.text();
+
+                    Element salaryElement = element.select("[data-qa=vacancy-serp__vacancy-compensation]").first();
+                    String salary = salaryElement != null ? salaryElement.text() : "";
+
+                    Vacancy vacancy = new Vacancy();
+                    vacancy.setTitle(title);
+                    vacancy.setCity(city);
+                    vacancy.setCompanyName(companyName);
+                    vacancy.setSalary(salary);
+                    vacancy.setSiteName("http://hh.ua");
+                    vacancy.setUrl(url);
+
+                    vacancies.add(vacancy);
+                }
+
+                pageNumber++;
+            }
         } catch (IOException e) {
         }
 
+        return vacancies;
+    }
 
-        return null;
+    protected Document getDocument(String searchString, int page) throws IOException {
+        if (page != 0) {
+            return Jsoup.connect("http://javarush.ru/testdata/big28data" + page + ".html").get();
+        }
+        return Jsoup.connect("http://javarush.ru/testdata/big28data.html").get();
     }
 }
