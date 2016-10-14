@@ -8,16 +8,22 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class MoikrugStrategy implements Strategy {
-    private static final String URL_FORMAT = "https://moikrug.ru/vacancies?q=java+%s&page=%d";
+    private static final String URL_FORMAT = "https://moikrug.ru/vacancies?city_id=%s&page=%s&q=java";
+    private static HashMap<String, String> cityCodes = new HashMap<>();
+
+    {
+        cityCodes.put("Москва", "678");
+    }
 
     @Override
     public List<Vacancy> getVacancies(String searchString) {
         List<Vacancy> vacancies = new ArrayList<>();
         try {
-            int pageNumber = 0;
+            int pageNumber = 1;
             while (true) {
                 Document doc = getDocument(searchString, pageNumber);
                 if (doc == null) {
@@ -46,7 +52,7 @@ public class MoikrugStrategy implements Strategy {
                     vacancy.setCity(city);
                     vacancy.setCompanyName(companyName);
                     vacancy.setSalary(salary);
-                    vacancy.setSiteName("https://moikrug.ru");
+                    vacancy.setSiteName("https://moikrug.ru/");
                     vacancy.setUrl(url);
 
                     vacancies.add(vacancy);
@@ -60,16 +66,9 @@ public class MoikrugStrategy implements Strategy {
     }
 
     protected Document getDocument(String searchString, int page) throws IOException {
-        String url = String.format(URL_FORMAT, searchString, page);
+        String url = String.format(URL_FORMAT, cityCodes.get(searchString), page);
         String userAgent = "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.85 Safari/537.36";
-        String referrer = "http://javarush.ru/";
-        Document doc;
-        if (page == 0) {
-            doc = Jsoup.connect("http://javarush.ru/testdata/big28data2.html").userAgent(userAgent).referrer(referrer).get();
-        } else {
-            doc = Jsoup.connect("http://javarush.ru/testdata/big28data3.html").userAgent(userAgent).referrer(referrer).get();
-            // doc = Jsoup.connect(url).userAgent(userAgent).referrer(referrer).get();
-        }
-        return doc;
+        String referrer = "http://google.com.ua/";
+        return Jsoup.connect(url).userAgent(userAgent).referrer(referrer).get();
     }
 }
