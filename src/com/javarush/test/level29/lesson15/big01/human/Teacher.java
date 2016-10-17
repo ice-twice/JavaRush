@@ -9,6 +9,7 @@ public class Teacher extends Human {
         this.numberOfStudents = numberOfStudents;
     }
 
+    @Override
     public void live() {
         teach();
     }
