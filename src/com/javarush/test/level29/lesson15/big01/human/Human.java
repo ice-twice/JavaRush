@@ -88,6 +88,4 @@ public class Human implements Alive {
     public class Size {
         public int height, weight;
     }
-
-
 }
