@@ -1,5 +1,9 @@
 package com.javarush.test.level29.lesson15.big01.human;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class Human {
     public static final int FIRST = 1;
     public static final int SECOND = 2;
@@ -13,11 +17,28 @@ public class Human {
     protected boolean isSoldier;
     private int id;
     private int bloodGroup;
+    private List<Human> children = new ArrayList<>();
 
     public Human(boolean isSoldier) {
         this.isSoldier = isSoldier;
         this.id = nextId;
         nextId++;
+    }
+
+    public List<Human> getChildren() {
+        return Collections.unmodifiableList(children);
+    }
+
+    public void addChild(Human human) {
+        children.add(human);
+    }
+
+    public void removeChild(int index) {
+        children.remove(index);
+    }
+
+    public void removeChild(Human human) {
+        children.remove(human);
     }
 
     public int getBloodGroup() {
