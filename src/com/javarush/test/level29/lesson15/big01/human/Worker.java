@@ -6,7 +6,7 @@ public class Worker {
     private double salary;
 
     public Worker(String name, int age) {
-        human = new Human(false);
+        human = new Human(name, age);
     }
 
     public void live() {
