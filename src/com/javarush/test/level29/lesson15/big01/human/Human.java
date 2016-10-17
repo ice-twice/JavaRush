@@ -9,7 +9,7 @@ public class Human implements Alive {
     public static final int SECOND = 2;
     public static final int THIRD = 3;
     public static final int FOURTH = 4;
-    public static int nextId = 0;
+    private static int nextId = 0;
     protected int age;
     protected String name;
     protected int[] size;
@@ -71,10 +71,6 @@ public class Human implements Alive {
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public void printSize() {
