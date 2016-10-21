@@ -1,9 +1,15 @@
 package com.javarush.test.level30.lesson15.big01;
 
+import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class Server {
+
+    private static Map<String, Connection> connectionMap = new ConcurrentHashMap<String, Connection>();
+
     public static void main(String[] args) {
         ConsoleHelper.writeMessage("Enter the server port: ");
         int port = ConsoleHelper.readInt();
@@ -15,6 +21,17 @@ public class Server {
             }
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public static void sendBroadcastMessage(Message message) {
+        for (Connection connection : connectionMap.values()) {
+            try {
+                connection.send(message);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
         }
     }
 
