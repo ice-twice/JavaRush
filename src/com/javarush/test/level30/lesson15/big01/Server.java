@@ -1,6 +1,5 @@
 package com.javarush.test.level30.lesson15.big01;
 
-import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -8,22 +7,14 @@ public class Server {
     public static void main(String[] args) {
         ConsoleHelper.writeMessage("Enter the server port: ");
         int port = ConsoleHelper.readInt();
-        ServerSocket serverSocket;
-        try {
-            serverSocket = new ServerSocket(port);
+        try (ServerSocket serverSocket = new ServerSocket(port)) {
             ConsoleHelper.writeMessage("Server was started.");
             while (true) {
-                try {
-                    Socket socket = serverSocket.accept();
-                    new Handler(socket).start();
-                } catch (Exception e) {
-                    serverSocket.close();
-                    e.printStackTrace();
-                    break;
-                }
+                Socket socket = serverSocket.accept();
+                new Handler(socket).start();
             }
-        } catch (IOException e) {
-
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
