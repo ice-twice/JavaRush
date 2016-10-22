@@ -93,5 +93,47 @@ public class Client {
                 Client.this.notify();
             }
         }
+
+        protected void clientHandshake() throws IOException, ClassNotFoundException {
+            while (true) {
+                Message receiveMessage = connection.receive();
+                if (receiveMessage != null) {
+                    MessageType messageType = receiveMessage.getType();
+                    if (messageType != null) {
+                        if (messageType == MessageType.NAME_REQUEST) {
+                            String userName = getUserName();
+                            Message message = new Message(MessageType.USER_NAME, userName);
+                            connection.send(message);
+                        } else if (messageType == MessageType.NAME_ACCEPTED) {
+                            notifyConnectionStatusChanged(true);
+                            return;
+                        } else {
+                            throw new IOException("Unexpected MessageType");
+                        }
+                    }
+                }
+            }
+        }
+
+
+        protected void clientMainLoop() throws IOException, ClassNotFoundException {
+            while (true) {
+                Message receiveMessage = connection.receive();
+                if (receiveMessage != null) {
+                    MessageType messageType = receiveMessage.getType();
+                    if (messageType != null) {
+                        if (messageType == MessageType.TEXT) {
+                            processIncomingMessage(receiveMessage.getData());
+                        } else if (messageType == MessageType.USER_ADDED) {
+                            informAboutAddingNewUser(receiveMessage.getData());
+                        } else if (messageType == MessageType.USER_REMOVED) {
+                            informAboutDeletingNewUser(receiveMessage.getData());
+                        } else {
+                            throw new IOException("Unexpected MessageType");
+                        }
+                    }
+                }
+            }
+        }
     }
 }
