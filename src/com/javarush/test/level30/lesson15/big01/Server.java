@@ -85,5 +85,26 @@ public class Server {
                 }
             }
         }
+
+        @Override
+        public void run() {
+            ConsoleHelper.writeMessage("The connection to the server has been established. " + socket.getRemoteSocketAddress());
+            String userName = null;
+            try (Connection connection = new Connection(socket)) {
+                userName = serverHandshake(connection);
+                Message messageUserAdded = new Message(MessageType.USER_ADDED, userName);
+                sendBroadcastMessage(messageUserAdded);
+                sendListOfUsers(connection, userName);
+                serverMainLoop(connection, userName);
+            } catch (IOException | ClassNotFoundException e) {
+                ConsoleHelper.writeMessage("Error during the program.");
+                if (userName != null) {
+                    connectionMap.remove(userName);
+                    Message messageUserRemoved = new Message(MessageType.USER_REMOVED, userName);
+                    sendBroadcastMessage(messageUserRemoved);
+                }
+                ConsoleHelper.writeMessage("The connection to the server is closed.");
+            }
+        }
     }
 }
