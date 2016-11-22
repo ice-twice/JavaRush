@@ -4,12 +4,12 @@ import java.nio.file.Paths;
 
 public class Archiver {
     public static void main(String[] args) {
-        Util.printInConsole("Enter the path to create a new archive:");
+        ConsoleHelper.writeMessage("Enter the path to create a new archive:");
+        String pathArchive = ConsoleHelper.readString();
+        ZipFileManager manager = new ZipFileManager(Paths.get(pathArchive));
+        ConsoleHelper.writeMessage("Enter the path to the file to be archived:");
+        String pathFile = ConsoleHelper.readString();
         try {
-            String pathArchive = Util.readLine();
-            ZipFileManager manager = new ZipFileManager(Paths.get(pathArchive));
-            Util.printInConsole("Enter the path to the file to be archived:");
-            String pathFile = Util.readLine();
             manager.createZip(Paths.get(pathFile));
         } catch (Exception e) {
             e.printStackTrace();
