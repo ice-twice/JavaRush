@@ -5,36 +5,19 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class ConsoleHelper {
-    private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-
-    public static String readString() {
-        String line;
-        while (true) {
-            try {
-                line = reader.readLine();
-                break;
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return line;
-    }
+    private static BufferedReader bis = new BufferedReader(new InputStreamReader(System.in));
 
     public static void writeMessage(String message) {
         System.out.println(message);
     }
 
-    public static int readInt() {
-        int i;
-        while (true) {
-            try {
-                i = Integer.parseInt(readString());
-                break;
-            } catch (NumberFormatException e) {
-                writeMessage("Error when entering the number. Enter the number again.");
-            }
-        }
-        return i;
+    public static String readString() throws IOException {
+        String text = bis.readLine();
+        return text;
     }
 
+    public static int readInt() throws IOException {
+        String text = readString();
+        return Integer.parseInt(text.trim());
+    }
 }
