@@ -1,6 +1,5 @@
 package com.javarush.test.level31.lesson15.big01.command;
 
-
 import com.javarush.test.level31.lesson15.big01.ConsoleHelper;
 import com.javarush.test.level31.lesson15.big01.ZipFileManager;
 import com.javarush.test.level31.lesson15.big01.exception.PathIsNotFoundException;
@@ -12,19 +11,18 @@ public class ZipExtractCommand extends ZipCommand {
     @Override
     public void execute() throws Exception {
         try {
-            ConsoleHelper.writeMessage("Извлечение архива.");
+            ConsoleHelper.writeMessage("Распаковка архива.");
 
             ZipFileManager zipFileManager = getZipFileManager();
 
-            ConsoleHelper.writeMessage("Введите полное имя файла или директории для разархивации:");
-            Path outputPath = Paths.get(ConsoleHelper.readString());
-            zipFileManager.extractAll(outputPath);
+            ConsoleHelper.writeMessage("Введите путь для распаковки:");
+            Path destinationPath = Paths.get(ConsoleHelper.readString());
+            zipFileManager.extractAll(destinationPath);
 
-            ConsoleHelper.writeMessage("Архив разархивирован.");
+            ConsoleHelper.writeMessage("Архив был распакован.");
 
         } catch (PathIsNotFoundException e) {
-            ConsoleHelper.writeMessage("Вы неверно указали имя файла или директории.");
+            ConsoleHelper.writeMessage("Неверный путь для распаковки.");
         }
-
     }
 }
