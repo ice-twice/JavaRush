@@ -63,5 +63,17 @@ public class Controller {
             ExceptionHandler.log(e);
         }
     }
+
+    public void createNewDocument() {
+    }
+
+    public void openDocument() {
+    }
+
+    public void saveDocument() {
+    }
+
+    public void saveDocumentAs() {
+    }
 }
 
